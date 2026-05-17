@@ -25,6 +25,7 @@ export RAPIDS_ARTIFACTS_DIR
 source ./ci/use_conda_packages_from_prs.sh
 
 # populates `RATTLER_CHANNELS` array and `RATTLER_ARGS` array
+source rapids-rattler-channel-string
 
 # --no-build-id allows for caching with `sccache`
 # more info is available at
