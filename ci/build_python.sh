@@ -22,6 +22,7 @@ echo "${version}" > VERSION
 source ./ci/use_conda_packages_from_prs.sh
 
 # populates `RATTLER_CHANNELS` array and `RATTLER_ARGS` array
+source rapids-rattler-channel-string
 
 rapids-logger "Prepending channel ${CPP_CHANNEL} to RATTLER_CHANNELS"
 
