@@ -2,17 +2,22 @@
 # SPDX-FileCopyrightText: Copyright (c) 2025-2026, NVIDIA CORPORATION.
 # SPDX-License-Identifier: Apache-2.0
 
-# Temporary: download libraft conda artifacts from rapidsai/raft#3019
+# Temporary: download raft conda artifacts from rapidsai/raft#3019
 # (fix/detail_symbol_export — removes RAFT_EXPORT from detail namespaces)
 # Remove this file and all `source ./ci/use_conda_packages_from_prs.sh` calls
 # once that PR is merged and the nightly picks it up.
 
+# C++ packages (libraft)
 LIBRAFT_CHANNEL=$(rapids-get-pr-artifact raft 3019 cpp conda)
+
+# Python packages (pylibraft, raft-dask)
+PYRAFT_CHANNEL=$(rapids-get-pr-artifact raft 3019 python conda --stable)
 
 # For rattler builds: prepend to RAPIDS_PREPENDED_CONDA_CHANNELS so that
 # rapids-rattler-channel-string picks them up with strict channel priority.
 RAPIDS_PREPENDED_CONDA_CHANNELS=(
     "${LIBRAFT_CHANNEL}"
+    "${PYRAFT_CHANNEL}"
 )
 export RAPIDS_PREPENDED_CONDA_CHANNELS
 
